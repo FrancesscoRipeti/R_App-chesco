@@ -1,0 +1,97 @@
+#content {
+  background-image: url(../../../../assets/img/bg-welcome.jpg);
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3em;
+  padding-bottom: 60px;
+}
+
+/* Contenedor de scroll para las tarjetas */
+#scrollable-container {
+  width: 85vw;
+  max-height: 90vh; /* Ajustar la altura máxima si es necesario */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12m;
+}
+
+.card-wrapper {
+  flex: none;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000f1;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.card-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 7px;
+  background-color: #1a1a1a;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #ffffff;
+  border-radius: 15px;
+  padding: 0px;
+  max-width: 60px;
+  max-height: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.img-perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.perfil-container {
+  display: flex;
+  align-items: center;
+}
+
+.perfil-info h3,
+.perfil-info p {
+  margin: 0;
+}

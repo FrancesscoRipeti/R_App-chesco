@@ -1,0 +1,51 @@
+<ion-content fullscreen="true">
+  <div id="content">
+    <ion-menu side="end" contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <div class="perfil-container">
+            <img [src]="imgPerfil" alt="Imagen de perfil" class="img-perfil" *ngIf="imgPerfil">
+            <div class="perfil-info">
+              <h3>{{ nombreCompleto }}</h3>
+              <p>{{ perfil }}</p>
+            </div>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding"></ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Bienvenido, {{ nombre }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+    </div>
+    <!-- Contenedor con scroll para las tarjetas de cursos -->
+    <div id="scrollable-container">
+      <ion-card *ngFor="let curso of cursos" class="card-wrapper">
+        <img [src]="curso.imagen" alt="Imagen del curso" />
+        <ion-card-header>
+          <h2>{{ curso.nombre }}</h2>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ curso.descripcion }}</p>
+          <div class="user-info">
+            <p><strong>Profesor:</strong> {{ curso.usuario.nombre_completo }}</p>
+            <p><strong>Correo:</strong> {{ curso.usuario.correo }}</p>
+          </div>
+        </ion-card-content>
+      </ion-card>      
+    </div>
+
+    <!-- Contenedor de botones en la parte inferior de la pantalla -->
+
+    <ion-button expand="full" (click)="scanQRCode()">
+      Escanear QR
+    </ion-button>
+  </div>
+</ion-content>

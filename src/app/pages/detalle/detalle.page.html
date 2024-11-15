@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle del Curso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Información del curso -->
+  <ion-card *ngIf="curso">
+    <ion-card-header>
+      <ion-card-title>{{ curso.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ curso.descripcion }}</p>
+      <div class="user-info">
+        <p><strong>Profesor:</strong> {{ curso.usuario?.nombre_completo }}</p>
+        <p><strong>Correo:</strong> {{ curso.usuario?.correo }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón para crear una nueva clase -->
+  <ion-button expand="block" color="success" (click)="crearClase(curso.id)">Nueva clase</ion-button>
+
+  <!-- Tabla de registro de clases -->
+  <ion-grid *ngIf="clases.length > 0">
+    <ion-row>
+      <ion-col size="1">#</ion-col>
+      <ion-col size="2">Día</ion-col>
+      <ion-col size="3">Fecha</ion-col>
+      <ion-col size="2">Cantidad</ion-col>
+      <ion-col size="2">Ver</ion-col>
+      <ion-col size="2">QR</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let clase of clases; let i = index">
+      <ion-col size="1">{{ clase.codigo_web }}</ion-col>
+      <ion-col size="2">{{ obtenerDiaSemana(clase.fecha) }}</ion-col>
+      <ion-col size="3">{{ clase.fecha | date: 'dd \'de\' MMMM, yyyy' }}</ion-col>
+      <ion-col size="2">1</ion-col>
+      <ion-col size="2">
+        <ion-button color="medium" size="small" (click)="verDetallesClase(curso.id, clase.codigo_web)">Ver</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <!-- Nueva lista de clases -->
+  <ion-list *ngIf="clases.length > 0">
+    <ion-item *ngFor="let clase of clases" (click)="verDetallesClase(curso.id, clase.codigo_web)">
+      Clase ID: {{ clase.id }} - Código Web: {{ clase.codigo_web }}
+    </ion-item>
+  </ion-list>
+
+  
+
+  <p *ngIf="clases.length === 0">No se encontraron clases para este curso.</p>
+</ion-content>
